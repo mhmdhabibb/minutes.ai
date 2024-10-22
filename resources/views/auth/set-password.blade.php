@@ -31,7 +31,7 @@
             Your previous password has been reset. Please set a new password for your account.
         </p>
 
-        <form action="{{ route('set-password.post') }}" method="POST">
+        <form action="" method="POST">
             @csrf
             <div class="relative mb-8">
                 <input type="password" id="password" 
