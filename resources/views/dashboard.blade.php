@@ -14,6 +14,10 @@
         #mobile-sidebar.show {
             transform: translateX(0); 
         }
+        #record-popup {
+            display: none;
+            backdrop-filter: blur(15px);
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans">
@@ -48,7 +52,7 @@
             </div>            
 
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-10 mb-16">
-                <button class="bg-purple-600 text-white w-full h-40 py-4 rounded-lg text-xl flex flex-col items-center justify-center">
+                <button onclick="openRecordPopup()" class="bg-purple-600 text-white w-full h-40 py-4 rounded-lg text-xl flex flex-col items-center justify-center">
                     <i class="fas fa-microphone mb-4 text-3xl"></i>
                     Record Audio
                 </button>
@@ -77,7 +81,7 @@
                         <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
                             <p class="text-purple-600 text-xl font-semibold">Data Meeting Bpdsm</p>
                             <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                                <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg">Lihat Transcript</button>
+                                <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</button>
                                 <button class="bg-blue-500 text-white py-2 px-2 rounded-lg">Download</button>
                             </div>
                         </div>
@@ -87,7 +91,7 @@
                         <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
                             <p class="text-purple-600 text-xl font-semibold">Data Meeting Bpdsm</p>
                             <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                                <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg">Lihat Transcript</button>
+                                <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</button>
                                 <button class="bg-blue-500 text-white py-2 px-2 rounded-lg">Download</button>
                             </div>
                         </div>
@@ -97,7 +101,7 @@
                         <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
                             <p class="text-purple-600 text-xl font-semibold">Data Meeting Bpdsm</p>
                             <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                                <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg">Lihat Transcript</button>
+                                <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</button>
                                 <button class="bg-blue-500 text-white py-2 px-2 rounded-lg">Download</button>
                             </div>
                         </div>
@@ -128,6 +132,35 @@
                 </nav>
             </div>
         </div>
+
+        <div id="record-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-2xl shadow-lg p-6 w-[410px]">
+                <div class="flex justify-between items-center  mt-2">
+                    <h2 class="text-xl font-semibold">Record Audio</h2>
+                    <button onclick="closeRecordPopup()" class="focus:outline-none">
+                        <i class="far fa-times-circle text-2xl text-gray-600 hover:text-gray-500"></i>
+                    </button>
+                </div>
+                <p class="text-gray-500 ">Record your Audio and start recording</p>
+                <hr class="border-t-2 border-gray-300 my-2 mb-6">
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Topic</label>
+                    <input type="text" placeholder="Fill the topic..." class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-8">
+                    <label class="block text-gray-700 mb-2">Select Language</label>
+                    <div class="relative">
+                        <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
+                            <option value="english" selected>English</option>
+                            <option value="indonesia">Indonesia</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-3 top-3 text-gray-500 pointer-events-none"></i>
+                    </div>
+                </div>
+                <button class="w-full bg-blue-600 text-white py-2 rounded-lg mb-2 hover:bg-blue-700">Start Recording</button>
+                <button class="w-full border border-blue-600 text-blue-600 py-2 rounded-lg hover:bg-blue-50">Another Option</button>
+            </div>
+        </div>
         
     </div>
 
@@ -136,6 +169,7 @@
         const hamburger = document.getElementById('hamburger');
         const mobileSidebar = document.getElementById('mobile-sidebar');
         const closeSidebar = document.getElementById('close-sidebar');
+        const recordPopup = document.getElementById('record-popup');
 
         menuItems.forEach(item => {
             item.addEventListener('click', () => {
@@ -156,6 +190,14 @@
             mobileSidebar.classList.remove('show'); 
             setTimeout(() => mobileSidebar.classList.add('hidden'), 300); 
         });
+
+        function openRecordPopup() {
+            recordPopup.style.display = 'flex';
+        }
+
+        function closeRecordPopup() {
+            recordPopup.style.display = 'none';
+        }
     </script>
 </body>
 </html>

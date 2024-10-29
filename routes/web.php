@@ -24,3 +24,7 @@ Route::get('/forgot-password', function () {
     return view('auth.forgot-password'); 
 })->name('forgot-password');
 
+
+Route::get('/recording', function () {
+    return view('recording'); 
+})->name('recording');
