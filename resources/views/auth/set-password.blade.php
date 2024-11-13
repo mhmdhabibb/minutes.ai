@@ -16,11 +16,7 @@
     </style>
 </head>
 
-<body class="bg-gray-900 min-h-screen flex items-center justify-center p-4">
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full opacity-50 transform rotate-45"></div>
-        <div class="absolute bottom-20 right-20 w-60 h-60 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-50 transform -rotate-45"></div>
-    </div>
+<body class="bg-cover bg-center min-h-screen flex items-center justify-center " style="background-image: url('{{ asset('asset/img/pass.png') }}');">
 
     <div class="bg-white rounded-2xl p-8 w-full max-w-md z-10 relative">
         <h1 class="text-3xl font-semibold text-gray-900 mb-2 mt-4">

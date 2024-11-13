@@ -78,8 +78,8 @@
             </p>
             
             <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-                <button class="px-6 py-3 rounded-full bg-white text-black text-xl">Try it out</button>
-                <button class="px-6 py-3 rounded-full bg-blue-600 text-xl">Get started free</button>
+                <a href="{{ route('login') }}" class="px-6 py-3 rounded-xl bg-white text-black text-xl">Login</a>
+                <a href="{{  route('signup') }}" class="px-6 py-3 rounded-xl bg-blue-600 text-xl">Register</a>
             </div>
             
             <div class="mt-8">
