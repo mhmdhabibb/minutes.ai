@@ -6,6 +6,8 @@
     <title>DASHBOARD</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         #mobile-sidebar {
             transition: transform 0.5s ease; 
@@ -163,6 +165,16 @@
         </div>
         
     </div>
+    @if(session('status'))
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('status') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
 
     <script>
         const menuItems = document.querySelectorAll('.menu-item');
