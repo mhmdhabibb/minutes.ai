@@ -36,3 +36,12 @@ Route::get('/forgot-password', function () {
 Route::get('/recording', function () {
     return view('recording'); 
 })->name('recording');
+
+
+Route::get('/summary', function () {
+    return view('summary'); 
+})->name('summary');
+
+Route::get('/transcript', function () {
+    return view('transcript'); 
+})->name('transcript');

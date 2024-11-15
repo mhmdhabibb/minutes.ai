@@ -7,47 +7,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="text-white">
-<!-- Navigation -->
-<nav class="w-full bg-black">
-    <div class="container mx-auto px-4 p`y-6 flex items-center">
-        <!-- Logo -->
-        <div class="flex-shrink-0">
-            <img src="{{ asset('asset/img/logo.png') }}" alt="Logo" class="h-14">
-        </div>
-        
-        <!-- Centered Links for About and Features -->
-        <div class="hidden md:flex flex-grow justify-center"> 
-            <div class="flex space-x-4 rounded-full border border-white px-6 p-2">
-                <button class="px-4 py-2 text-white hover:bg-gray-700 rounded" data-target="about">About</button>
-                <button class="px-4 py-2 text-white hover:bg-gray-700 rounded" data-target="features">Features</button>
+    <!-- Navigation -->
+    <nav class="w-full bg-black">
+        <div class="container mx-auto px-4 py-6 flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="{{ asset('asset/img/logo.png') }}" alt="Logo" class="h-14">
             </div>
-        </div>
-        
-        <!-- Right Aligned Login and Sign Up Links -->
-        <div class="hidden md:flex items-center space-x-4">
-            <a href="{{ route('login') }}" class="px-4 py-2 rounded-full bg-transparent border border-white text-white hover:bg-gray-700">Login</a>
-            <a href="{{ route('signup') }}" class="px-4 py-2 rounded-full bg-purple-600 text-white hover:bg-purple-700">Sign Up</a>
-        </div>
-        
-        <!-- Mobile menu with hamburger icon -->
-        <div class="md:hidden relative">
-            <button id="hamburger" class="text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-            <!-- Dropdown menu for mobile view -->
-            <div id="mobile-menu" class="hidden absolute right-0 mt-2 z-20"> 
-                <div class="flex flex-col space-y-2 border border-white rounded-lg p-4 backdrop-blur bg-white bg-opacity-10"> 
+            <div class="hidden md:flex md:justify-center md:flex-grow mr-16 p-2"> 
+                <div class="flex space-x-4 rounded-full border border-white px-6 p-2">
                     <button class="px-4 py-2 text-white hover:bg-gray-700 rounded" data-target="about">About</button>
                     <button class="px-4 py-2 text-white hover:bg-gray-700 rounded" data-target="features">Features</button>
-                    <a href="{{ route('login') }}" class="px-4 py-2 text-white hover:bg-gray-700 rounded">Login</a>
-                    <a href="{{ route('signup') }}" class="px-4 py-2 text-white bg-purple-600 rounded">Sign Up</a>
+                </div>
+            </div>
+            <div class="md:hidden relative">
+                <button id="hamburger" class="text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <!-- Dropdown menu-->
+                <div id="mobile-menu" class="hidden absolute right-0 mt-2 z-20"> 
+                    <div class="flex flex-col space-y-2 border border-white rounded-lg p-4  backdrop-blur bg-white bg-opacity-10"> 
+                        <button class="px-4 py-2 text-white hover:bg-gray-700 rounded" data-target="about">About</button>
+                        <button class="px-4 py-2 text-white hover:bg-gray-700 rounded" data-target="features">Features</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
     <script>
         document.querySelectorAll('nav button[data-target]').forEach(button => {
             button.addEventListener('click', function() {
@@ -86,13 +73,13 @@
             </h1>
         
             <p class="text-gray-400 mt-4 mb-8 max-w-2xl mx-auto" style="font-size: 22px;">
-                Convonnotes is a web-based application designed to automatically <br>
+                Canvanotes is a web-based application designed to automatically <br>
                 convert voice to text (speech-to-text).
             </p>
             
             <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-                <button class="px-6 py-3 rounded-full bg-white text-black text-xl">Try it out</button>
-                <button class="px-6 py-3 rounded-full bg-blue-600 text-xl">Get started free</button>
+                <a href="{{ route('login') }}" class="px-6 py-3 rounded-full bg-white text-black text-xl">Try it out</a>
+                <a href="{{ route('signup') }}" class="px-6 py-3 rounded-full bg-blue-600 text-xl">Get started free</a>
             </div>
             
             <div class="mt-8">
@@ -107,12 +94,12 @@
         <div class="w-1/2">
             <h2 class="text-4xl font-bold text-indigo-400 mb-4">About</h2>
             <p class="text-gray-400">
-                Convonnotes is a web-based application designed to automatically convert voice to text (speech-to-text). 
+                Canvanotes is a web-based application designed to automatically convert voice to text (speech-to-text). 
                 This application makes it easy for users to record conversations or speeches, then quickly convert 
                 them into text that can be edited, saved or shared.
             </p>
             <p class="text-gray-400 mt-4">
-                Was created in 2024, Convonnotes is web-based application, 
+                Was created in 2024, Canvanotes is web-based application, 
                 the function is to help the user in transcripting an audio 
                 into a text. Transcripting an audio by your voices or files.
             </p>
@@ -288,4 +275,4 @@
     </section>
     
 </body>
-</html>
+</html> 
