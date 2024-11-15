@@ -6,6 +6,13 @@ Route::get('/', function() {
     return view('home');
 })->name('home');
 
+Route::get('/adminsettings', function () {
+    return view('adminsettings'); 
+})->name('adminsettings');
+
+Route::get('/settings', function () {
+    return view('settings'); 
+})->name('settings');
 
 Route::get('/login', function () {
     return view('login'); 
