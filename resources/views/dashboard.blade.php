@@ -81,8 +81,8 @@
                         <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
                             <p class="text-purple-600 text-xl font-semibold">Data Meeting Bpdsm</p>
                             <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                                <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</button>
-                                <button class="bg-blue-500 text-white py-2 px-2 rounded-lg">Download</button>
+                                <a href="{{ route('transcript') }}"class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</a>
+                                <a href="{{ route('summary') }}"class="bg-blue-500 text-white py-2 px-2 rounded-lg">Download</a>
                             </div>
                         </div>
                     </div>
