@@ -15,8 +15,8 @@
             </div>
             <div class="hidden md:flex md:justify-center md:flex-grow mr-16 p-2"> 
                 <div class="flex space-x-4 rounded-full border border-white px-6 p-2">
-                    <button class="px-4 py-2 text-white hover:bg-gray-700 rounded" data-target="about">About</button>
-                    <button class="px-4 py-2 text-white hover:bg-gray-700 rounded" data-target="features">Features</button>
+                    <button class="px-4 py-2 text-white transition-transform hover:scale-125" data-target="about">About</button>
+                    <button class="px-4 py-2 text-white transition-transform hover:scale-125" data-target="features">Features</button>
                 </div>
             </div>
             <div class="md:hidden relative">
@@ -28,8 +28,8 @@
                 <!-- Dropdown menu-->
                 <div id="mobile-menu" class="hidden absolute right-0 mt-2 z-20"> 
                     <div class="flex flex-col space-y-2 border border-white rounded-lg p-4  backdrop-blur bg-white bg-opacity-10"> 
-                        <button class="px-4 py-2 text-white hover:bg-gray-700 rounded" data-target="about">About</button>
-                        <button class="px-4 py-2 text-white hover:bg-gray-700 rounded" data-target="features">Features</button>
+                        <button class="px-4 py-2 text-white transition-transform hover:scale-125" data-target="about">About</button>
+                        <button class="px-4 py-2 text-white transition-transform hover:scale-125" data-target="features">Features</button>
                     </div>
                 </div>
             </div>
@@ -83,45 +83,46 @@
             </div>
             
             <div class="mt-8">
-                <img src="{{ asset('asset/img/convo.svg') }}" alt="AI Illustration" class="mx-auto -mt-8">
+                <img src="{{ asset('asset/img/convo.svg') }}" alt="AI Illustration" class="mx-auto -mt-8 ">
             </div>
         </div>
     </section>
     
     
     <!-- About Section -->
-    <section id="about" class="container mx-auto px-4 py-16 flex items-center">
-        <div class="w-1/2">
+    <section id="about" class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center">
+        <div class="w-full md:w-1/2">
             <h2 class="text-4xl font-bold text-indigo-400 mb-4">About</h2>
             <p class="text-gray-400">
                 Canvanotes is a web-based application designed to automatically convert voice to text (speech-to-text). 
                 This application makes it easy for users to record conversations or speeches, then quickly convert 
-                them into text that can be edited, saved or shared.
+                them into text that can be edited, saved, or shared.
             </p>
             <p class="text-gray-400 mt-4">
-                Was created in 2024, Canvanotes is web-based application, 
-                the function is to help the user in transcripting an audio 
-                into a text. Transcripting an audio by your voices or files.
+                Was created in 2024, Canvanotes is a web-based application, 
+                the function is to help the user in transcribing an audio 
+                into a text. Transcribing an audio by your voices or files.
             </p>
         </div>
-        <div class="w-1/2">
-            <img src="{{ asset('asset/img/convn.png') }}" alt="About Illustration" class="ml-auto">
+        <div class="w-full md:w-1/2 mt-8 md:mt-0">
+            <img src="{{ asset('asset/img/convn.png') }}" alt="About Illustration" class="hidden md:block ml-auto">
         </div>
     </section>
     
+    
     <!-- Features Section -->
-    <section id="features" class="flex items-center justify-center p-16">
-        <div class="bg-black bg-gradient-to-b from-black to-purple-900/50 rounded-[40px] p-16 max-w-full w-full">
-            <h1 class="text-[#8B5CF6] text-6xl font-bold text-center mb-4">
+    <section id="features" class="flex items-center justify-center p-8 sm:p-16">
+        <div class="bg-black bg-gradient-to-b from-black to-purple-900/50 rounded-[40px] p-8 sm:p-16 max-w-full w-full">
+            <h1 class="text-[#8B5CF6] text-4xl sm:text-6xl font-bold text-center mb-4 mt-2">
                 Features
             </h1>
-            <p class="text-white text-center text-xl mb-16 max-w-3xl mx-auto">
+            <p class="text-white text-center text-lg sm:text-xl mb-8 sm:mb-16 max-w-3xl mx-auto">
                 Intuitive design that allows easy editing, searching, and exporting of transcriptions and summaries
             </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> 
+    
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <!-- Record Audio Card -->
-                <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-8 flex flex-col items-center text-center">
+                <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-6 sm:p-8 flex flex-col items-center text-center">
                     <div class="mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
@@ -132,9 +133,9 @@
                     <h2 class="text-xl font-semibold mb-4">Record Audio</h2>
                     <p class="text-gray-300">Start recording instantly with a single tap for ease of use.</p>
                 </div>
-            
+    
                 <!-- Auto create summary Card -->
-                <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-8 flex flex-col items-center text-center">
+                <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-6 sm:p-8 flex flex-col items-center text-center">
                     <div class="mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
@@ -146,9 +147,9 @@
                     <h2 class="text-xl font-semibold mb-4">Auto Create Summary</h2>
                     <p class="text-gray-300">Highlights key points and essential information for quick understanding.</p>
                 </div>
-            
+    
                 <!-- Auto create Transcript Card -->
-                <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-8 flex flex-col items-center text-center">
+                <div class="bg-white bg-opacity-10 backdrop-blur rounded-xl p-6 sm:p-8 flex flex-col items-center text-center">
                     <div class="mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
@@ -158,9 +159,10 @@
                     <p class="text-gray-300">Automatically transcribes spoken words into text instantly.</p>
                 </div>
             </div>
-            
+    
         </div>
     </section>
+    
 
     <!-- FAQ Section -->
     <section class="bg-black text-white py-28 px-4 md:px-8 relative">

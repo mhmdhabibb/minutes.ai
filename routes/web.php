@@ -19,6 +19,9 @@ Route::get('/dashboard', function () {
 })->name('dashboard')
 ->middleware('auth');
 
+Route::get('/settings', function () {
+    return view('settings'); 
+})->name('settings');
 
 Route::get('/verify', function () {
     return view('auth.verify'); 
@@ -33,6 +36,11 @@ Route::get('/forgot-password', function () {
 })->name('forgot-password');
 
 
-Route::get('/recording', function () {
-    return view('recording'); 
-})->name('recording');
+Route::get('/summary', function () {
+    return view('summary'); 
+})->name('summary');
+
+Route::get('/transcript', function () {
+    return view('transcript'); 
+})->name('transcript');
+

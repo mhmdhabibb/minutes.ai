@@ -23,6 +23,11 @@
             <p class="text-gray-600 mb-8">
                 Don't worry, happens to all of us. Enter your email below to recover your password
             </p>
+            @if (session('status'))
+                <div class="bg-green-500 text-white p-2 rounded-lg mb-4">
+                    {{ session('status') }}
+                </div>
+            @endif
     
             <form method="POST" action="">
                 @csrf
