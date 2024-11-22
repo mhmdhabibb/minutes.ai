@@ -6,7 +6,14 @@ module.exports = {
     './resources/css/**/*.css',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'jakarta': ['"Plus Jakarta Sans"', 'sans-serif'],
+      },
+      colors: {
+        'blue-light': '#EBEFF2',
+      },
+    },
   },
   plugins: [],
 }

@@ -28,3 +28,7 @@ Route::get('/forgot-password', function () {
 Route::get('/recording', function () {
     return view('recording'); 
 })->name('recording');
+
+Route::get('/admindashboard', function () {
+    return view('admindashboard'); // 
+});
