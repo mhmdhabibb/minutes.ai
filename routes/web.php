@@ -1,10 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function() {
     return view('home');
 })->name('home');
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/signup', [AuthController::class, 'showSignup'])->name('signup');
+Route::post('/signup', [AuthController::class, 'signup']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/adminsettings', function () {
     return view('adminsettings'); 
@@ -23,9 +30,13 @@ Route::get('/signup', function () {
 })->name('signup');
 
 Route::get('/dashboard', function () {
-    return view('dashboard'); // 
-});
+    return view('dashboard');
+})->name('dashboard')
+->middleware('auth');
 
+Route::get('/settings', function () {
+    return view('settings'); 
+})->name('settings');
 
 Route::get('/verify', function () {
     return view('auth.verify'); 
@@ -38,23 +49,3 @@ Route::get('/set-password', function () {
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password'); 
 })->name('forgot-password');
-
-
-Route::get('/recording', function () {
-    return view('recording'); 
-})->name('recording');
-
-<<<<<<< HEAD
-Route::get('/admindashboard', function () {
-    return view('admindashboard'); // 
-});
-=======
-
-Route::get('/summary', function () {
-    return view('summary'); 
-})->name('summary');
-
-Route::get('/transcript', function () {
-    return view('transcript'); 
-})->name('transcript');
->>>>>>> d52cda96cd2f1b240ee1523aa6888841f21ccc30
