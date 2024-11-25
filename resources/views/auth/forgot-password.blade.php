@@ -6,8 +6,8 @@
     <title>Voice to Text AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="text-black bg-gray-900 min-h-screen flex items-center justify-center p-4">
-    <div class="bg-gray-900 min-h-screen flex items-center justify-center p-4">
+<body class="text-black bg-cover bg-center min-h-screen flex items-center justify-center" style="background-image: url('{{ asset('asset/img/pass.png') }}');">
+    <div class=" min-h-screen flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl p-8 w-full max-w-md z-10 relative">
             <a href="{{ route('login') }}" class="inline-flex items-center text-gray-600 mb-8 hover:text-gray-800">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -23,6 +23,11 @@
             <p class="text-gray-600 mb-8">
                 Don't worry, happens to all of us. Enter your email below to recover your password
             </p>
+            @if (session('status'))
+                <div class="bg-green-500 text-white p-2 rounded-lg mb-4">
+                    {{ session('status') }}
+                </div>
+            @endif
     
             <form method="POST" action="">
                 @csrf
