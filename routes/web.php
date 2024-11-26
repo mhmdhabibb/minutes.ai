@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
+
+// Routes User
+
 Route::get('/', function() {
-    return view('home');
-})->name('home');
+    return view('user.home');
+})->name('user.home');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -13,22 +16,14 @@ Route::get('/signup', [AuthController::class, 'showSignup'])->name('signup');
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/adminsettings', function () {
-    return view('adminsettings'); 
-})->name('adminsettings');
-
-Route::get('/settings', function () {
-    return view('settings'); 
-})->name('settings');
+Route::get('/user/settings', function () {
+    return view('user.settings'); 
+})->name('user.settings');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard')
+    return view('user.dashboard');
+})->name('user.dashboard')
 ->middleware('auth');
-
-Route::get('/settings', function () {
-    return view('settings'); 
-})->name('settings');
 
 Route::get('/verify', function () {
     return view('auth.verify'); 
@@ -43,9 +38,20 @@ Route::get('/forgot-password', function () {
 })->name('forgot-password');
 
 Route::get('/summary', function () {
-    return view('summary'); 
-})->name('summary');
+    return view('user.summary'); 
+})->name('user.summary');
 
 Route::get('/transcript', function () {
-    return view('transcript'); 
-})->name('transcript');
+    return view('user.transcript'); 
+})->name('user.transcript');
+
+
+// Routes Admin
+
+Route::get('/admin/settings', function () {
+    return view('admin.settings'); 
+})->name('admin.settings');
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard'); 
+})->name('admin.dashboard');
