@@ -15,10 +15,6 @@
         #mobile-sidebar.show {
             transform: translateX(0); 
         }
-        #record-popup, #upload-popup, #recording-in-progress {
-            display: none;
-            backdrop-filter: blur(15px);
-        }
     </style>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gotu&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
