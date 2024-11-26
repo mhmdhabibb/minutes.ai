@@ -3,13 +3,13 @@
         <img src="{{ asset('asset/img/logo.png') }}" alt="Logo" class="h-16">
     </div>
     <nav class="space-y-6">
-        <a href="{{ route('dashboard') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105 {{ request()->routeIs('dashboard') ? '' : '' }}" data-page="dashboard">
+        <a href="{{ route('user.dashboard') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105 {{ request()->routeIs('user.dashboard') ? 'bg-purple-400 bg-opacity-30' : '' }}" data-page="dashboard">
             <i class="fas fa-home mr-2"></i> Dashboard
         </a>
-        <a href="{{ route('settings') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105 {{ request()->routeIs('settings') ? '' : '' }}" data-page="settings">
+        <a href="{{ route('user.settings') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105 {{ request()->routeIs('user.settings') ? 'bg-purple-400 bg-opacity-30' : '' }}" data-page="settings">
             <i class="fas fa-cog mr-2"></i> Settings
         </a>
-        <a href="{{ route('home') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105">
+        <a href="{{ route('user.home') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105">
             <i class="fas fa-sign-out-alt mr-2"></i> Log Out
         </a>
     </nav>
@@ -25,13 +25,13 @@
             </button>
         </div>
         <nav class="space-y-6 text-center">
-            <a href="{{ route('dashboard') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105" data-page="dashboard">
+            <a href="{{ route('user.dashboard') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105" data-page="dashboard">
                 <i class="fas fa-home mr-2"></i> Dashboard
             </a>
-            <a href="{{ route('settings') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105" data-page="settings">
+            <a href="{{ route('user.settings') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105" data-page="settings">
                 <i class="fas fa-cog mr-2"></i> Settings
             </a>
-            <a href="{{ route('home') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105" data-page="logout">
+            <a href="{{ route('user.home') }}" class="text-lg flex items-center p-2 rounded menu-item transition-transform hover:scale-105 " data-page="logout">
                 <i class="fas fa-sign-out-alt mr-2"></i> Log Out
             </a>
         </nav>

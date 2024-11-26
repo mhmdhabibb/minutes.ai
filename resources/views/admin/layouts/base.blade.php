@@ -20,11 +20,14 @@
             backdrop-filter: blur(15px);
         }
     </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gotu&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+    </style>
     @stack('styles')
 </head>
 <body class="bg-gray-100 font-sans">
     <div class="flex">
-        @include('layouts.sidebar')
+        @include('admin.layouts.sidebar')
 
         <div class="flex-1 p-12">
             <!-- Main Content -->
