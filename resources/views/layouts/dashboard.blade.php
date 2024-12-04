@@ -23,15 +23,18 @@
     @stack('styles')
 </head>
 <body class="font-sans bg-gray-100">
+    
+
+
     <div class="flex">
-        @include('layouts.sidebar')
+        @include('layouts.sidebaradmin')
 
         <div class="flex-1 p-12">
             <!-- Main Content -->
             @yield('content')
         </div>
     </div>
-    
+
 
     @stack('scripts')
     <script>
@@ -52,6 +55,5 @@
         });
     </script>
 
-    
 </body>
 </html>

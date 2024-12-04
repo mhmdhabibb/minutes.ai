@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ModuleAIController;
 
 Route::get('/', function() {
     return view('home');
@@ -49,3 +50,9 @@ Route::get('/summary', function () {
 Route::get('/transcript', function () {
     return view('transcript'); 
 })->name('transcript');
+
+Route::get('/admindashboard', function () {
+    return view('admindashboard'); 
+})->name('admindashboard');
+
+Route::resource('modules', ModuleAIController::class);
