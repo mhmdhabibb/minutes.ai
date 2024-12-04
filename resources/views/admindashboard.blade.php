@@ -67,48 +67,11 @@
                     </div>
                 </div>
                             
-            {{-- </div>
-            <section class="mx-10 mb-10 ">
-                <div class=" w-full p-2 bg-white border border-[#EBEFF2] grid grid-cols-3">
-
-                    <div class="divide-[#EBEFF2]  md:divide-y"> 
-                        <div class=" text-xl font-medium text-[#343434]">No</div>
-                        <div class=" divide-[#EBEFF2] md:divide-y">
-                            <div class="text-xl font-normal text-[#343434]">01</div>
-                            <div class="text-xl font-normal text-[#343434]">02</div>
-                            <div class="text-xl font-normal text-[#343434]">03</div>
-                            <div class="text-xl font-normal text-[#343434]">04</div>   
-                            <div class="text-xl font-normal text-[#343434]">05</div>         
-                        </div>
-                    </div>
-                    <div class="divide-[#EBEFF2] md:divide-y">
-                        <div class="text-xl font-medium text-[#343434]">Name</div>
-                        <div class="divide-[#EBEFF2] md:divide-y">
-                            <div class="text-xl font-normal text-[#343434]">Ujang</div>
-                            <div class="text-xl font-normal text-[#343434]">Uchiha inoen</div>
-                            <div class="text-xl font-normal text-[#343434]">Uchiha imin</div>
-                            <div class="text-xl font-normal text-[#343434]">Gojo no inoen</div>
-                            <div class="text-xl font-normal text-[#343434]">saitimin</div>
-                        </div>
-                    </div>
-
-                    <div class="divide-[#EBEFF2]  md:divide-y"> 
-                        <div class=" text-xl font-medium text-[#343434]">Email</div>
-                        <div class=" divide-[#EBEFF2] md:divide-y">
-                            <div class="text-xl font-normal text-[#343434]">Ujang@gmail.com</div>
-                            <div class="text-xl font-normal text-[#343434]">Uchiha@gmail.com</div>
-                            <div class="text-xl font-normal text-[#343434]">Uchiha@gmail.com</div>
-                            <div class="text-xl font-normal text-[#343434]">inoen@gmail.com</div>   
-                            <div class="text-xl font-normal text-[#343434]">saitimin@gmail.com</div>          
-                        </div>
-                        
-                    </div>
-
-
+            
 
             </section>
             </div>
-             --}}
+             
              <table class="p-6 w-full font-sans border-2  border-[#EBEFF2]">
                     
                 <thead class="text-[#343434]">
