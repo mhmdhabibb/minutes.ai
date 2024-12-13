@@ -22,7 +22,7 @@
     </style>
     @stack('styles')
 </head>
-<body class="font-sans bg-gray-100">
+<body class="bg-gray-100 font-sans">
     <div class="flex">
         @include('user.layouts.sidebar')
 

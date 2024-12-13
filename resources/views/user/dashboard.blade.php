@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('user.layouts.app')
 
 @section('title', 'Summary')
 
@@ -17,11 +17,11 @@
 
     {{-- Main Content --}}
     <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-10 mb-16">
-        <button onclick="openRecordPopup()" class="bg-purple-900 text-white w-full h-40 py-4 rounded-lg text-xl flex flex-col items-center justify-center">
+        <button onclick="openRecordPopup()" class="bg-purple-900 hover:bg-purple-800 text-white w-full h-40 py-4 rounded-lg text-xl flex flex-col items-center justify-center ">
             <i class="fas fa-microphone mb-4 text-3xl"></i>
             Record Audio
         </button>
-        <button onclick="openUploadPopup()" class="bg-teal-500 text-white w-full h-40 py-4 rounded-lg text-xl flex flex-col items-center justify-center">
+        <button onclick="openUploadPopup()" class="bg-teal-500 hover:bg-teal-600 text-white w-full h-40 py-4 rounded-lg text-xl flex flex-col items-center justify-center">
             <i class="fas fa-upload mb-4 text-3xl"></i>
             Upload Audio
         </button>
@@ -45,7 +45,7 @@
                 <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
                     <p class="text-purple-600 text-xl font-semibold">Data Meeting Bpdsm</p>
                     <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                        <a href="{{ route('transcript') }}">
+                        <a href="{{ route('user.transcript') }}">
                             <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</button>
                         </a>                                  
                     </div>
@@ -57,7 +57,7 @@
                 <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
                     <p class="text-purple-600 text-xl font-semibold">Data Meeting Bpdsm</p>
                     <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                        <a href="{{ route('transcript') }}">
+                        <a href="{{ route('user.transcript') }}">
                             <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</button>
                         </a>
                     </div>
@@ -69,7 +69,7 @@
                 <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
                     <p class="text-purple-600 text-xl font-semibold">Data Meeting Bpdsm</p>
                     <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                        <a href="{{ route('transcript') }}">
+                        <a href="{{ route('user.transcript') }}">
                             <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</button>
                         </a>
                     </div>

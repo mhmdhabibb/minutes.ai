@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModuleAIController;
 use App\Http\Controllers\SpeechToTextController;
 
+// Routes User
+
 Route::get('/', function() {
     return view('user.home');
 })->name('user.home');
@@ -41,8 +43,8 @@ Route::get('/summary', function () {
 })->name('user.summary');
 
 Route::get('/transcript', function () {
-    return view('transcript'); 
-})->name('transcript');
+    return view('user.transcript'); 
+})->name('user.transcript');
 
 
 // Routes Admin
@@ -61,9 +63,3 @@ Route::resource('modules', ModuleAIController::class);
 
 Route::get('/upload-audio', [SpeechToTextController::class, 'showUploadForm']);
 Route::post('/process-audio', [SpeechToTextController::class, 'processUpload']);
-
-// Route for uploading audio
-
-// Route::get('/upload-audio', [SpeechToTextController::class, 'showUploadForm'])->name('upload.form');
-// Route::post('/process-audio', [SpeechToTextController::class, 'processAudio'])->name('process.audio');
-// te::get('/transcription-result', [SpeechToTextController::class, 'showTranscriptionResult'])->name('transcription.result');
