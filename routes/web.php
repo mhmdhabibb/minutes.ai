@@ -44,9 +44,6 @@ Route::get('/transcript', function () {
     return view('transcript'); 
 })->name('transcript');
 
-Route::get('/app', function () {
-    return view('layouts.dashboard'); 
-})->name('layouts.dashboard');
 
 // Routes Admin
 
