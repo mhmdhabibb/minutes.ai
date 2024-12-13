@@ -14,7 +14,7 @@ try:
     transcription = result["text"]
 
     # Summarize transcription
-    summarizer = pipeline("summarization", model="indo")
+    summarizer = pipeline("summarization", model="t5-small")
     summary = summarizer(transcription, max_length=70, min_length=30, do_sample=False)
 
     print("")
