@@ -1,48 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/> 
-    <style>
-        #mobile-sidebar {
-            transition: transform 0.5s ease; 
-            transform: translateX(-100%);
-        }
-        #mobile-sidebar.show {
-            transform: translateX(0); 
-        }
-        #record-popup {
-            display: none;
-            backdrop-filter: blur(15px);
-        }
-    </style>
-</head>
-<body class="bg-gray-100 font-sans">
-    <div class="flex">
-        <!-- Sidebar -->
-        <div id="sidebar" class="bg-black text-white w-1/5 min-h-screen p-10 hidden md:hidden lg:block">
-            <div class="flex justify-center items-center mb-20">
-                <img src="{{ asset('asset/img/logo.png') }}" alt="Logo" class="h-16">
-            </div>
-            <nav class="space-y-6">
-                <a class="text-lg flex items-center p-2 rounded menu-item" href="#" data-page="dashboard">
-                    <i class="fas fa-home mr-2"></i> Dashboard
-                </a>
-                <a class="text-lg flex items-center p-2 rounded menu-item bg-[#624b6e]" href="#" data-page="settings">
-                    <i class="fas fa-cog mr-2"></i> Settings
-                </a>
-                <a class="text-lg flex items-center p-2 rounded menu-item" href="#" data-page="logout">
-                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                </a>
-            </nav>
-        </div>
+@extends('admin.layouts.base')
 
-        <!-- Main Content -->
-        <div class="flex-1 p-10">
-            <h1 class="text-3xl font-bold mb-6">Settings</h1>
+@section('title', 'admin.settings')
+
+@section('content')
+
+{{-- Header --}}
+<div class="flex justify-between items-center mb-8">
+    <button id="hamburger" class="lg:hidden p-2 mr-4 text-black focus:outline-none">
+        <i class="fas fa-bars"></i>
+    </button>
+    <h1 class="text-3xl font-bold text-gray-800">Settings</h1>
+</div> 
             <div class="bg-white p-8 rounded-lg shadow-md">
 
                 <!-- Profile Section -->
@@ -140,9 +108,17 @@
 
             if (newPassword && newPassword === confirmPassword) {
                 localStorage.setItem('password', newPassword);
-                alert('Password updated successfully');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Password updated successfully',
+                    showConfirmButton: true,
+                });
             } else if (newPassword !== confirmPassword) {
-                alert('New password and confirm password do not match.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'New password and confirm password do not match.'
+                });
                 return;
             }
 
@@ -150,7 +126,13 @@
             localStorage.setItem('email', email);
             localStorage.setItem('phone', phone);
 
-            alert('Settings saved successfully');
+            Swal.fire({
+                icon: 'success',
+                title: 'Settings saved successfully',
+                showConfirmButton: true,
+            }).then(() => {
+                window.location.href = "{{ route('admin.dashboard') }}";
+            });
         }
 
         function clearForm() {
@@ -168,5 +150,4 @@
             document.getElementById('phone').value = localStorage.getItem('phone') || '';
         });
     </script>
-</body>
-</html>
+@endsection
