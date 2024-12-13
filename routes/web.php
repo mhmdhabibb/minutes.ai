@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModuleAIController;
+use App\Http\Controllers\SpeechToTextController;
+
 
 Route::get('/', function() {
     return view('home');
@@ -56,3 +58,14 @@ Route::get('/admindashboard', function () {
 })->name('admindashboard');
 
 Route::resource('modules', ModuleAIController::class);
+
+
+
+Route::get('/upload-audio', [SpeechToTextController::class, 'showUploadForm']);
+Route::post('/process-audio', [SpeechToTextController::class, 'processUpload']);
+
+// Route for uploading audio
+
+// Route::get('/upload-audio', [SpeechToTextController::class, 'showUploadForm'])->name('upload.form');
+// Route::post('/process-audio', [SpeechToTextController::class, 'processAudio'])->name('process.audio');
+// te::get('/transcription-result', [SpeechToTextController::class, 'showTranscriptionResult'])->name('transcription.result');
