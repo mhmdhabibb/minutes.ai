@@ -24,7 +24,7 @@
 </head>
 <body class="font-sans bg-gray-100">
     <div class="flex">
-        @include('layouts.sidebar')
+        @include('user.layouts.sidebar')
 
         <div class="flex-1 p-12">
             <!-- Main Content -->

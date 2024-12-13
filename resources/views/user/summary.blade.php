@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('user.layouts.app')
 
 @section('title', 'Summary')
 
@@ -36,10 +36,10 @@
     <div class="border-b border-gray-200 mb-4">
         <ul class="flex text-sm font-medium text-gray-500">
             <li class="mr-6">
-                <a href="{{ route('transcript') }}" class="hover:text-gray-900">Transcript</a>
+                <a href="{{ route('user.transcript') }}" class="hover:text-gray-900">Transcript</a>
             </li>
             <li>
-                <a href="{{ route('summary') }}" class="text-gray-900">Summary</a>
+                <a href="{{ route('user.summary') }}" class="text-gray-900">Summary</a>
             </li>
         </ul>
     </div>

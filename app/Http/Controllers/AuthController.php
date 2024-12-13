@@ -25,7 +25,7 @@ class AuthController extends Controller
         ]);
         
         if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
-            return redirect()->route('dashboard')->with('status', 'Login Succesfully!');
+            return redirect()->route('user.dashboard')->with('status', 'Login Succesfully!');
         } else {
             return back()->withErrors([
                 'email' => 'This email is not registered.',

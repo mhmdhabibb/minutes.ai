@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('user.layouts.app')
 
 @section('title', 'Settings')
 
@@ -130,7 +130,7 @@
                 title: 'Settings saved successfully',
                 showConfirmButton: true,
             }).then(() => {
-                window.location.href = "{{ route('dashboard') }}";
+                window.location.href = "{{ route('user.dashboard') }}";
             });
         }
 
