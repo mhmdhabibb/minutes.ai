@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AIModelController;
 
 
 // Routes User
@@ -48,10 +49,39 @@ Route::get('/transcript', function () {
 
 // Routes Admin
 
-Route::get('/admin/settings', function () {
-    return view('admin.settings'); 
-})->name('admin.settings');
+Route::get('admin/login', [AuthController::class, 'showAdminLoginForm'])->name('admin.login');
+Route::post('admin/login', [AuthController::class, 'adminLogin']);
+Route::post('admin/logout', [AuthController::class, 'adminLogout'])->name('admin.logout');
+Route::group(['middleware' => 'admin'], function () {
+});
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard'); 
-})->name('admin.dashboard');
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin/settings', function () {
+        return view('admin.settings'); 
+    })->name('admin.settings');
+
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard'); 
+    })->name('admin.dashboard');
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/models', [AIModelController::class, 'index'])->name('admin.models.index');
+        Route::post('/models', [AIModelController::class, 'store'])->name('admin.models.store');
+        Route::post('/models/{id}/activate', [AIModelController::class, 'activate'])->name('admin.models.activate');
+        Route::delete('/models/{id}', [AIModelController::class, 'destroy'])->name('admin.models.destroy');
+    });
+});
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/settings', [AuthController::class, 'index'])->name('admin.settings');
+    
+    Route::patch('/settings/profile', [AuthController::class, 'updateProfile'])
+        ->name('admin.settings.update_profile');
+    
+    Route::patch('/settings/profile-picture', [AuthController::class, 'updateProfilePicture'])
+        ->name('admin.settings.update_profile_picture');
+    
+    Route::patch('/settings/password', [AuthController::class, 'updatePassword'])
+        ->name('admin.settings.update_password');
+});
+

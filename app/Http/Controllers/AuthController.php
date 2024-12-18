@@ -10,13 +10,12 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    
+    // USER
     public function showLogin()
     {
         return view('auth.login');
     }
-
-    //Login
+    //Login User
     public function login(Request $request)
     {
         $validated = $request->validate([
@@ -60,11 +59,39 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success', 'Account created successfully!');
     }
 
-
-
     public function logout()
     {
         Auth::logout();
         return redirect('/');
     }
+
+    // ADMIN
+    public function showAdminLoginForm()
+    {
+        return view('admin.login');
+    }
+    public function adminLogin(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        // guard 'admin'
+        if (Auth::guard('admin')->attempt($credentials)) {
+            return redirect()->route('admin.dashboard');
+        }
+        return back()->withErrors([
+            'email' => 'Email atau password salah.',
+        ]);
+    }
+    public function adminLogout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login')->with('status', 'Logout successfully!');
+    }
+
+    public function index()
+    {
+        $admin = Auth::guard('admin')->user();
+        return view('admin.settings', compact('admin'));
+    }
 }
+
