@@ -63,3 +63,5 @@ Route::resource('modules', ModuleAIController::class);
 
 Route::get('/upload-audio', [SpeechToTextController::class, 'showUploadForm']);
 Route::post('/process-audio', [SpeechToTextController::class, 'processUpload']);
+Route::post('/update-result', [SpeechToTextController::class, 'updateResult'])->name('update-result');
+
