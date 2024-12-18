@@ -7,13 +7,18 @@ use Illuminate\Support\Facades\Storage;
 
 class SpeechToTextController extends Controller
 {
+    // Show the upload form
     public function showUploadForm()
     {
         return view('speech.upload');
     }
 
+    // Process the uploaded audio
     public function processUpload(Request $request)
     {
+        // Set the maximum execution time for this script to 300 seconds (5 minutes)
+        set_time_limit(300);
+
         $request->validate([
             'audio' => 'required|mimes:ogg,wav,mp3|max:20480', // Validate file type and size
         ]);
@@ -58,5 +63,27 @@ class SpeechToTextController extends Controller
             // Handle errors gracefully
             return back()->withErrors(['error' => $e->getMessage()]);
         }
+    }
+
+    // Update the transcription and summary result
+    public function updateResult(Request $request)
+    {
+        $request->validate([
+            'transcription' => 'required|string',
+            'summary' => 'required|string',
+        ]);
+
+        // Retrieve the updated transcription and summary from the request
+        $transcription = $request->input('transcription');
+        $summary = $request->input('summary');
+
+        // Save or process the updated transcription and summary
+        // Example: Store them back in a session or a database if required
+
+        return redirect()->back()->with([
+            'success' => 'Transcription and summary updated successfully!',
+            'transcription' => $transcription,
+            'summary' => $summary,
+        ]);
     }
 }
