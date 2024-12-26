@@ -88,18 +88,10 @@ Route::middleware(['auth:admin'])->group(function () {
         ->name('admin.settings.update_password');
 });
 
-<<<<<<< HEAD
+
+Route::patch('/settings/password', [AuthController::class, 'updatePassword'])
+    ->name('admin.settings.update_password');
+
 Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard'); 
+    return view('admin.dashboard');
 })->name('admin.dashboard');
-
-Route::resource('modules', ModuleAIController::class);
-
-// Speech to text and Summarize
-
-Route::get('/upload-audio', [SpeechToTextController::class, 'showUploadForm']);
-Route::post('/process-audio', [SpeechToTextController::class, 'processUpload']);
-Route::post('/update-result', [SpeechToTextController::class, 'updateResult'])->name('update-result');
-
-=======
->>>>>>> b772c6a333b3f3a4c623e326c26cb89e46144cce
