@@ -1,14 +1,12 @@
 <?php
 
+
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-<<<<<<< HEAD
 use App\Http\Controllers\ModuleAIController;
 use App\Http\Controllers\SpeechToTextController;
-=======
 use App\Http\Controllers\AIModelController;
-
->>>>>>> b772c6a333b3f3a4c623e326c26cb89e46144cce
 
 // Routes User
 
