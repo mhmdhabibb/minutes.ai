@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Admin;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Admin;  // Make sure to import your Admin model
 
 class AdminSeeder extends Seeder
 {
@@ -13,7 +13,7 @@ class AdminSeeder extends Seeder
         Admin::create([
             'name' => 'Admin',
             'email' => 'admin@example.com',
-            'password' => bcrypt('admin123'), 
+            'password' => Hash::make('password')  // Change 'password' to your desired password
         ]);
     }
 }

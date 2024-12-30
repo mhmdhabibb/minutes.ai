@@ -95,3 +95,10 @@ Route::patch('/settings/password', [AuthController::class, 'updatePassword'])
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->name('admin.dashboard');
+
+    
+// Speech to text and summarize
+
+Route:get('/upload-audio', [SpeechToTextController::class, 'showUploadForm']);
+Route::post('/upload-audio', [SpeechToTextController::class, 'processUpload']);
+Route::post('/update-audio', [SpeechToTextController::class, 'UpdateResult'])->name('update-result');

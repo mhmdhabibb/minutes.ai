@@ -61,9 +61,12 @@
                     </svg>
                     <span class="ml-2 font-normal text-gray-500">0:08</span>
                 </p>
-                <p class="mt-1 text-sm text-gray-700">Hey Lisa, I got your email with a meeting summary from Otter and I was curious about how it works. Have you been using it a lot for your meetings?</p>
+                <div id="transcription-view">
+                    <p class="mt-1 text-sm text-gray-700">{{ $transcription }}</p>
+                </div>
+                
             </div>
-            <div>
+            {{-- <div>
                 <p class="flex items-center">
                     Speaker 2
                     <svg class="w-4 h-4 ml-2 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -72,7 +75,7 @@
                     <span class="ml-2 font-normal text-gray-500">0:08</span>
                 </p>
                 <p class="mt-1 text-sm text-gray-700">Yeah, I started using ConvoNotes a few months ago. And it saved me a lot of time from taking manual notes. It also helps me find answers from previous meetings and even write follow-up emails.</p>
-            </div>
+            </div> --}}
         </div>
 
         <div class="flex justify-end mt-40">

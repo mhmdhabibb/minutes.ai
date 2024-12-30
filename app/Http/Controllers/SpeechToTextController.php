@@ -10,7 +10,7 @@ class SpeechToTextController extends Controller
     // Show the upload form
     public function showUploadForm()
     {
-        return view('speech.upload');
+        return view('user.dashboard');
     }
 
     // Process the uploaded audio
@@ -55,7 +55,7 @@ class SpeechToTextController extends Controller
                 }
             }
 
-            return view('speech.result', [
+            return view('user.transcript', [
                 'transcription' => trim($transcription),
                 'summary' => trim($summary),
             ]);
