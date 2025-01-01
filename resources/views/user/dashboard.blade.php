@@ -137,35 +137,40 @@
     </div>
 
     {{-- Upload Popup --}}
-    <div id="upload-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-lg font-semibold">Upload Audio Files</h2>
-                <button onclick="closeUploadPopup()" class="text-gray-400 hover:text-gray-600">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <p class="text-gray-500 mb-6">Select and upload the audio of your choice</p>
+    {{-- Upload Popup --}}
+<div id="upload-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold">Upload Audio Files</h2>
+            <button onclick="closeUploadPopup()" class="text-gray-400 hover:text-gray-600">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <p class="text-gray-500 mb-6">Select and upload the audio of your choice</p>
+        
+        <form action="/process-audio" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center mb-6">
                 <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-4"></i>
                 <p class="text-gray-500 mb-2">Choose an audio or drag & drop it here</p>
                 <p class="text-gray-400 text-sm mb-4">MP3 or MP4 formats, up to 15MB</p>
-        
+
                 <!-- Input for file selection -->
-                <input type="file" id="fileInput" class="hidden" accept="audio/mp4, .mp3, .wav, .m4a" onchange="displayFileName()">
-                <button onclick="document.getElementById('fileInput').click()" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg">Browse File</button>
+                <input type="file" name="audio" id="fileInput" class="hidden" accept="audio/mp4, .mp3, .wav, .m4a" onchange="displayFileName()" required>
+                <button type="button" onclick="document.getElementById('fileInput').click()" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg">Browse File</button>
             </div>
+
             <div class="mb-6">
                 <label class="block text-gray-700 mb-2">Select Language</label>
                 <div class="relative">
-                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
+                    <select name="language" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
                         <option value="english" selected>English</option>
                         <option value="indonesia">Indonesia</option>
                     </select>
                     <i class="fas fa-chevron-down absolute right-3 top-3 text-gray-500 pointer-events-none"></i>
                 </div>
             </div>
-        
+
             <!-- File upload status container -->
             <div id="uploadStatus" class="bg-gray-100 rounded-lg shadow p-4 mb-4 flex items-center" style="display: none;">
                 <div class="flex-shrink-0">
@@ -188,8 +193,16 @@
                     <i class="fas fa-times text-gray-400 cursor-pointer" onclick="removeFile()"></i>
                 </div>
             </div>
-        </div>
-    </div>     
+
+            <!-- Submit button -->
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg w-full font-semibold">
+                Upload and Transcribe
+            </button>
+        </form>
+    </div>
+</div>
+
+
     
 
     @if(session('status'))

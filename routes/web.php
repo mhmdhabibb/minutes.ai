@@ -2,13 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-<<<<<<< HEAD
 use App\Http\Controllers\ModuleAIController;
 use App\Http\Controllers\SpeechToTextController;
-=======
 use App\Http\Controllers\AIModelController;
 
->>>>>>> b772c6a333b3f3a4c623e326c26cb89e46144cce
 
 // Routes User
 
@@ -90,7 +87,6 @@ Route::middleware(['auth:admin'])->group(function () {
         ->name('admin.settings.update_password');
 });
 
-<<<<<<< HEAD
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard'); 
 })->name('admin.dashboard');
@@ -103,5 +99,4 @@ Route::get('/upload-audio', [SpeechToTextController::class, 'showUploadForm']);
 Route::post('/process-audio', [SpeechToTextController::class, 'processUpload']);
 Route::post('/update-result', [SpeechToTextController::class, 'updateResult'])->name('update-result');
 
-=======
->>>>>>> b772c6a333b3f3a4c623e326c26cb89e46144cce
+
