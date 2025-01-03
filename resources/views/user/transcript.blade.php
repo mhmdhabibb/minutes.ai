@@ -14,6 +14,16 @@
         <p class="text-gray-600 text-sm">{{ $transcription }}</p>
     </div>
 
+    <!-- Diarization Section -->
+    <div class="mb-6">
+        <h4 class="text-gray-900 font-semibold text-sm mb-1">Diarization:</h4>
+        <ul class="text-gray-600 text-sm">
+            @foreach(explode("\n", $diarization) as $line)
+                <li>{{ $line }}</li>
+            @endforeach
+        </ul>
+    </div>
+
     <!-- Summary Section -->
     <div class="mb-6">
         <h4 class="text-gray-900 font-semibold text-sm mb-1">Summary:</h4>

@@ -25,38 +25,37 @@ class SpeechToTextController extends Controller
 
         // Store the uploaded file
         $path = $request->file('audio')->store('uploads');
-
-        // Call the Python script
         $audioPath = storage_path('app/' . $path);
-        $pythonScript = base_path('scripts/speechtotext.py'); // Path to the Python script
+        $transcriptionScript = base_path('scripts/transcription.py'); // Path to transcription script
+        $diarizationScript = base_path('scripts/diarization.py'); // Path to diarization script
+        $summaryScript = base_path('scripts/summary.py'); // Path to summary script
 
         try {
-            $output = shell_exec("python $pythonScript $audioPath");
+            // Run the diarization script
+            $diarizationResult = shell_exec("python $diarizationScript $audioPath");
 
-            if (!$output) {
-                throw new \Exception("Error in processing the audio file. No output received from the script.");
+            if (!$diarizationResult) {
+                throw new \Exception("Error in diarization. No output received from the script.");
             }
 
-            // Parse the transcription and summary from the Python script output
-            $lines = explode("\n", $output);
-            $transcription = '';
-            $summary = '';
-            $isSummary = false;
+            // Run the transcription script
+            $transcription = shell_exec("python $transcriptionScript $audioPath");
 
-            foreach ($lines as $line) {
-                if (trim($line) === "SUMMARY:") {
-                    $isSummary = true;
-                    continue;
-                }
-                if ($isSummary) {
-                    $summary .= $line . "\n";
-                } else {
-                    $transcription .= $line . "\n";
-                }
+            if (!$transcription) {
+                throw new \Exception("Error in transcription. No output received from the script.");
             }
 
+            // Run the summary script
+            $summary = shell_exec("python $summaryScript " . escapeshellarg(trim($transcription)));
+
+            if (!$summary) {
+                throw new \Exception("Error in summarization. No output received from the script.");
+            }
+
+            // Return the transcription, diarization, and summary to the view
             return view('user.transcript', [
                 'transcription' => trim($transcription),
+                'diarization' => trim($diarizationResult),
                 'summary' => trim($summary),
             ]);
         } catch (\Exception $e) {
