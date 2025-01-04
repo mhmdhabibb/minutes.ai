@@ -27,17 +27,9 @@ class SpeechToTextController extends Controller
         $path = $request->file('audio')->store('uploads');
         $audioPath = storage_path('app/' . $path);
         $transcriptionScript = base_path('scripts/transcription.py'); // Path to transcription script
-        $diarizationScript = base_path('scripts/diarization.py'); // Path to diarization script
         $summaryScript = base_path('scripts/summary.py'); // Path to summary script
 
         try {
-            // Run the diarization script
-            $diarizationResult = shell_exec("python $diarizationScript $audioPath");
-
-            if (!$diarizationResult) {
-                throw new \Exception("Error in diarization. No output received from the script.");
-            }
-
             // Run the transcription script
             $transcription = shell_exec("python $transcriptionScript $audioPath");
 
@@ -52,10 +44,8 @@ class SpeechToTextController extends Controller
                 throw new \Exception("Error in summarization. No output received from the script.");
             }
 
-            // Return the transcription, diarization, and summary to the view
             return view('user.transcript', [
                 'transcription' => trim($transcription),
-                'diarization' => trim($diarizationResult),
                 'summary' => trim($summary),
             ]);
         } catch (\Exception $e) {
