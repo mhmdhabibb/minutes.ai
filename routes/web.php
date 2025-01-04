@@ -92,11 +92,16 @@ Route::get('/admin/dashboard', function () {
 })->name('admin.dashboard');
 
 Route::resource('modules', ModuleAIController::class);
+Route::get('/dashboard', [SpeechToTextController::class, 'showUploadForm'])->name('user.dashboard');
 
 // Speech to text and Summarize
 
+Route::middleware(['auth'])->group(function () {
 Route::get('/upload-audio', [SpeechToTextController::class, 'showUploadForm']);
-Route::post('/process-audio', [SpeechToTextController::class, 'processUpload']);
+Route::post('/process-audio', [SpeechToTextController::class, 'processUpload'])->name('process.audio');
 Route::post('/update-result', [SpeechToTextController::class, 'updateResult'])->name('update-result');
-
+Route::get('transcription/{id}', [SpeechToTextController::class, 'showTranscription'])->name('user.transcription.show');
+Route::post('/transcription/save', [SpeechToTextController::class, 'processUpload'])->name('transcription.save');
+Route::delete('transcription/{id}', [SpeechToTextController::class, 'deleteTranscription'])->name('user.transcription.delete');
+});
 

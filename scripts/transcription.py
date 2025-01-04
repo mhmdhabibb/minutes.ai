@@ -1,3 +1,4 @@
+# transcription.py
 import sys
 import speech_recognition as sr
 from pydub import AudioSegment
@@ -20,8 +21,7 @@ def main():
         with sr.AudioFile(wav_audio_path) as source:
             audio = recognizer.record(source)
         transcription = recognizer.recognize_google(audio)
-        print(transcription)
-        return transcription  # Ensure transcription is returned for the next step
+        print(transcription)  # Ensure it's printed correctly
     except Exception as e:
         print(f"Error in transcription: {e}", file=sys.stderr)
         sys.exit(1)

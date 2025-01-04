@@ -27,56 +27,51 @@
         </button>
     </div>
     
-    <div>
-        <div class="mb-12">
-            <h2 class="text-xl font-bold mb-4">History Summary</h2>
-            <div class="mb-12 relative">
-                <input 
-                    class="w-full md:w-1/3 p-4 pl-10 bg-transparent border border-gray-400 rounded-lg placeholder-gray-500" 
-                    placeholder="Search Title" 
-                    type="text"/>
-                <i class="fas fa-search absolute left-3 top-5 text-gray-400"></i>
-            </div>
-        </div>
-    
-        <div class="space-y-8">
-            <div class="mb-6">
-                <p class="text-gray-500 mb-2">Monday, 01 December 2024</p>
-                <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
-                    <p class="text-purple-600 text-xl font-semibold">Data Meeting Bpdsm</p>
-                    <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                        <a href="{{ route('user.transcript') }}">
-                            <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</button>
-                        </a>                                  
-                    </div>
-                </div>
-            </div>
-    
-            <div class="mb-6">
-                <p class="text-gray-500 mb-2">Friday, 12 October 2024</p>
-                <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
-                    <p class="text-purple-600 text-xl font-semibold">Data Meeting Bpdsm</p>
-                    <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                        <a href="{{ route('user.transcript') }}">
-                            <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="mb-6">
-                <p class="text-gray-500 mb-2">Wednesday, 08 October 2024</p>
-                <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
-                    <p class="text-purple-600 text-xl font-semibold">Data Meeting Bpdsm</p>
-                    <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
-                        <a href="{{ route('user.transcript') }}">
-                            <button class="border border-blue-500 text-blue-500 py-2 px-2 rounded-lg hover:bg-blue-50">Lihat Transcript</button>
-                        </a>
-                    </div>
+    {{-- Transcription History --}}
+    <div class="mb-12">
+    <h2 class="text-xl font-bold mb-4">Transcription History</h2>
+   
+<div class="space-y-8">
+    @foreach($transcriptions as $transcription)
+        <div class="mb-6">
+            <!-- Date for each transcription history -->
+            <p class="text-gray-500 mb-2">{{ \Carbon\Carbon::parse($transcription->created_at)->format('l, d F Y') }}</p>
+            
+            <!-- Transcription Info Block -->
+            <div class="bg-white p-7 rounded-lg shadow flex justify-between items-center">
+                <!-- File Name -->
+                <p class="text-purple-600 text-xl font-semibold truncate max-w-[70%]">
+                    {{ basename($transcription->audio_file_path) }}
+                </p>
+
+                <!-- View & Delete Buttons -->
+                <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4">
+                    <!-- View Full Transcription Button -->
+                    <a href="{{ route('user.transcription.show', $transcription->id) }}">
+                        <button class="border border-blue-500 text-blue-500 py-2 px-4 rounded-lg hover:bg-blue-50">
+                            View Transcription
+                        </button>
+                    </a> 
+
+                    <!-- Delete Button -->
+                    <form action="{{ route('user.transcription.delete', $transcription->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this transcription?')" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="border border-red-500 text-red-500 py-2 px-4 rounded-lg hover:bg-red-50">
+                            Delete
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
+</div>
+
+
+
+
+
+
 
 
     {{-- Record Popup --}}
@@ -147,8 +142,8 @@
         </div>
         <p class="text-gray-500 mb-6">Select and upload the audio of your choice</p>
         
-        <form action="/process-audio" method="POST" enctype="multipart/form-data">
-            @csrf
+        <form action="{{ route('transcription.save') }}" method="POST" enctype="multipart/form-data">
+        @csrf
             <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center mb-6">
                 <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-4"></i>
                 <p class="text-gray-500 mb-2">Choose an audio or drag & drop it here</p>
@@ -195,7 +190,7 @@
 
             <!-- Submit button -->
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg w-full font-semibold">
-                Upload and Transcribe
+                Transcribe
             </button>
         </form>
     </div>

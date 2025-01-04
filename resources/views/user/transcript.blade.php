@@ -4,27 +4,27 @@
 
 @section('content')
 
-    {{-- Header --}}
-    <div class="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow-md">
-    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Transcription and Summary</h2>
+<div class="container mx-auto p-6 bg-white shadow-md rounded-lg">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6">Transcription and Summary</h3>
 
-    <!-- Transcription Section -->
     <div class="mb-6">
-        <h4 class="text-gray-900 font-semibold text-sm mb-1">Transcription:</h4>
-        <p class="text-gray-600 text-sm">{{ $transcription }}</p>
+        <h4 class="text-xl font-semibold text-gray-700 mb-2">Transcription</h4>
+        <div class="p-4 bg-gray-100 rounded-lg shadow-sm">
+            <p class="text-gray-800 leading-relaxed">{{ $transcription }}</p>
+        </div>
     </div>
 
-
-
-    <!-- Summary Section -->
-    <div class="mb-6">
-        <h4 class="text-gray-900 font-semibold text-sm mb-1">Summary:</h4>
-        <p class="text-gray-600 text-sm">{{ $summary }}</p>
+    <div>
+        <h4 class="text-xl font-semibold text-gray-700 mb-2">Summary</h4>
+        <div class="p-4 bg-gray-100 rounded-lg shadow-sm">
+            <p class="text-gray-800 leading-relaxed">{{ $summary }}</p>
+        </div>
     </div>
 
-    <div class="flex justify-end mt-6">
-        <button class="px-4 py-2 text-gray-700 font-semibold rounded mr-2 border border-blue-500 hover:bg-blue-500 hover:text-white transition-colors">Cancel</button>
-        <button class="px-4 py-2 bg-blue-600 text-white font-semibold rounded">Save</button>
+    <div class="mt-6">
+        <a href="{{ route('user.dashboard') }}" class="inline-block px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition duration-200">
+            Back to Dashboard
+        </a>
     </div>
 </div>
 
