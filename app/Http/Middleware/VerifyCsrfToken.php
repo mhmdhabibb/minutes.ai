@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        // Add routes here if you need to exclude them from CSRF verification
+        // '/process-audio', // Uncomment this line temporarily for debugging
     ];
 }
